@@ -16,7 +16,7 @@ app.use(function(req,res,next){
     next();
 });
 //process.env.PORT ||
-const port =  2410;
+const port = process.env.PORT || 2410;
 app.listen(port,()=>console.log(`Listening on port ${port}`));
 
 let {getConnection} = require("./empDB.js");
