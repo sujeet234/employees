@@ -126,7 +126,7 @@ app.put("/employees/:empcode",function(req,res){
             console.log(err);
             res.status(404).send("Error in updation data");
         }
-        else if(results) res.send(results);
+        else res.send(results);
     })
 })
 
@@ -138,7 +138,7 @@ app.delete("/employees/:empcode",function(req,res){
             console.log(err);
             res.status(404).send("Error in deletion data");
         }
-        else if(results) res.send(results);
+        else res.send(results);
     })
 })
 
