@@ -92,7 +92,7 @@ app.get("/employees",function(req,res){
 
 
 app.get("/employees/:empcode",function(req,res){
-    let empcode = req.params.empcode;
+    let empcode = +req.params.empcode;
     let query = `SELECT * FROM employees WHERE empcode=$1`;
     console.log(query);
     client.query(query,[empcode],function(err,results){
@@ -131,7 +131,7 @@ app.put("/employees/:empcode",function(req,res){
 })
 
 app.delete("/employees/:empcode",function(req,res){
-    let empcode = req.params.empcode;
+    let empcode = +req.params.empcode;
     let query = `DELETE FROM employees WHERE empcode=$1`;
     client.query(query,[empcode],function(err,results){
         if(err){
