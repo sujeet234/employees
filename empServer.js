@@ -117,7 +117,7 @@ app.post("/employees",function(req,res){
 })
 
 app.put("/employees/:empcode",function(req,res){
-    let empcode = req.params.empcode;
+    let empcode = +req.params.empcode;
     let body = req.body;
     let query = `UPDATE employees SET name=$1,department=$2,designation=$3,salary=$4,gender=$5 WHERE empcode=$6`;
     let params = [body.name,body.department,body.designation,body.salary,body.gender,empcode];
@@ -126,7 +126,7 @@ app.put("/employees/:empcode",function(req,res){
             console.log(err);
             res.status(404).send("Error in updation data");
         }
-        else if(results) res.send("Update success");
+        else if(results) res.send(results);
     })
 })
 
@@ -138,7 +138,7 @@ app.delete("/employees/:empcode",function(req,res){
             console.log(err);
             res.status(404).send("Error in deletion data");
         }
-        else if(results) res.send("Delete success");
+        else if(results) res.send(results);
     })
 })
 
